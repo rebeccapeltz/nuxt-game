@@ -1,0 +1,39 @@
+
+@media only screen and (max-width: 768px) {
+    .message {
+        position: absolute;
+        /* top: 16px; */
+        bottom: 16px;
+        right: 16px;
+        padding: 8px 16px;
+        background: white;
+        color: red;
+        /* color: black; */
+        font-family: 'Rye', cursive;
+        /* font-family: monospace; */
+        font-size: 10px;
+    }
+}
+@media only screen and (min-width: 768px) {
+.message {
+    position: absolute;
+    /* top: 16px; */
+    bottom: 16px;
+    right: 16px;
+    padding: 8px 16px;
+    background: white;
+    color: purple;
+    /* color: black; */
+    font-family: 'Rye', cursive;
+    /* font-family: monospace; */
+    font-size: 18px;
+}
+}
+
+
+
+/* font-family: 'Berkshire Swash', cursive;
+font-family: 'Rye', cursive;
+font-family: 'Knewave', cursive;
+font-family: 'Spirax', cursive;
+font-family: 'Megrim', cursive; */
