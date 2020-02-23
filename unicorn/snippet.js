@@ -1,4 +1,3 @@
-"use strict";
 var __extends = this && this.__extends || function () {
   var extendStatics = function (d, b) {
     extendStatics = Object.setPrototypeOf ||
@@ -12,7 +11,8 @@ var __extends = this && this.__extends || function () {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
-window.addEventListener('DOMContentLoaded', init);
+// window.addEventListener('DOMContentLoaded', init);
+// init()
 //#region classes
 var Vector = /** @class */function () {
   function Vector() {
@@ -46,18 +46,8 @@ var Unicorn = /** @class */function (_super) {
   }
   return Unicorn;
 }(Vector);
-var Tile = /** @class */function (_super) {
-  __extends(Tile, _super);
-  function Tile() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
-    _this.color = randomColor();
-    _this.width = 30;
-    _this.height = 10;
-    _this.opacity = 1;
-    return _this;
-  }
-  return Tile;
-}(Vector);
+
+
 var ParticleFactory = /** @class */function () {
   function ParticleFactory() {
   }
@@ -90,19 +80,6 @@ var Renderer = /** @class */function () {
   function Renderer($) {
     var _this = this;
     this.$ = $;
-    // this.renderParticle = function (p) {
-    //   var $ = _this.$;
-    //   var x = p.x, y = p.y, radius = p.radius, color = p.color, opacity = p.opacity;
-    //   $.save();
-    //   $.globalAlpha = opacity;
-    //   $.fillStyle = color;
-    //   $.translate(x, y);
-    //   $.beginPath();
-    //   $.arc(0, 0, radius, 0, PI2);
-    //   $.fill();
-    //   $.stroke();
-    //   $.restore();
-    // };
     this.renderStar = function (p) {
       var $ = _this.$;
       var radius = p.radius, color = p.color, x = p.x, y = p.y, opacity = p.opacity;
@@ -124,33 +101,19 @@ var Renderer = /** @class */function () {
       $.stroke();
       $.restore();
     };
-    // this.renderTile = function (t) {
-    //   var $ = _this.$;
-    //   var x = t.x, y = t.y, width = t.width, height = t.height, color = t.color, opacity = t.opacity;
-    //   $.save();
-    //   $.globalAlpha = opacity;
-    //   $.fillStyle = color;
-    //   $.translate(x, y);
-    //   $.beginPath();
-    //   $.rect(0, 0, width, height);
-    //   $.fill();
-    //   $.stroke();
-    //   $.restore();
-    // };
+    
   }
-  Renderer.prototype.clearScreen = function () {
-    var $ = this.$;
-   
-    $.clearRect(0, 0, $.canvas.width, $.canvas.height);
-    $.fillStyle = 'black';
-  };
+  // Renderer.prototype.clearScreen = function () {
+  //   var $ = this.$;
+  //   // $.clearRect(0, 0, $.canvas.width, $.canvas.height);
+  // };
   Renderer.prototype.renderImage = function (img, x, y) {
     var $ = this.$;
     $.save();
     $.drawImage(img, x, y);
     $.restore();
   };
-  Renderer.prototype.renderUnicorn = function (u) {   
+  Renderer.prototype.renderUnicorn = function (u) {
     this.renderImage(u.image, u.x, u.y);
   };
   return Renderer;
@@ -158,9 +121,7 @@ var Renderer = /** @class */function () {
 //#endregion
 //#region globals
 var CANVAS = document.createElement('canvas');
-CANVAS.style="background-color:black;"
 var CTX = CANVAS.getContext('2d');
-CTX.fillStyle = 'black'
 
 var WIDTH = CANVAS.width = window.innerWidth;
 var HEIGHT = CANVAS.height = window.innerHeight;
@@ -178,7 +139,6 @@ var COLORS = [
   '#FF0000'];
 
 var RENDERER = new Renderer(CTX);
-var TILES = [];
 var PARTICLES = [];
 var PARTICLE_COUNT = 40;
 var UNICORN_IMAGE = document.getElementById('unicorn');
@@ -230,9 +190,7 @@ function updateUnicorn(unicorn) {
 }
 function animation() {
   requestAnimationFrame(animation);
-  RENDERER.clearScreen();
-  //   TILES.forEach(updateTile);
-  //   TILES.forEach(RENDERER.renderTile);
+  // RENDERER.clearScreen();
   PARTICLES.forEach(updateParticle);
   PARTICLES.forEach(RENDERER.renderStar);
   if (UNICORN_IMAGE.complete) {
@@ -256,47 +214,20 @@ function createParticles() {
     PARTICLES.push(p);
   }
 }
-// function updateTile(t) {
-//   t.vx -= GRAVITY;
-//   t.x += t.vx;
-//   t.y += t.vy;
-//   if (t.x + t.width < 0) {
-//     t.x = randomNumber(0, WIDTH) + WIDTH;
-//     t.vx = 0;
-//   }
-// }
-// function createTiles() {
-//   var tileCount = HEIGHT / 10;
-//   for (var i = tileCount; i > 0; --i) {
-//     var tileWidth = randomNumber(60, 120);
-//     var t = new Tile();
-//     t.opacity = randomNumber(0.1, 0.6);
-//     t.width = tileWidth;
-//     t.x = tileWidth * (i - 1);
-//     t.y = t.height * (i - 1);
-//     var ii = Math.floor(randomNumber(0, 260)) + 1;
-//     while (ii--) {
-//       updateTile(t);
-//     }
-//     TILES.push(t);
-//   }
-// }
+
 function setup() {
-  document.body.appendChild(CANVAS);
+  // document.body.appendChild(CANVAS);
 
   var unicornX = WIDTH / 2 - UNICORN.image.width / 2;
   var unicornY = HEIGHT / 2 - UNICORN.image.height / 2;
   UNICORN.x = unicornX;
   UNICORN.y = unicornY;
-  //   createTiles();
   createParticles();
  
   CTX.fillStyle = 'black';
   CTX.fillRect(0,0,window.innerWidth,window.innerHeight);
-  // CTX.fillRect(0, 0, window.innerWidth, window.innerHeight);
 }
 function init() {
   setup();
   animation();
 }
-//#endregion
