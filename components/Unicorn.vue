@@ -1,7 +1,7 @@
 <template>
   <div>
     <img v-show="true" src="~/assets/unicorn.png" alt="unicorn" id="unicorn" />
-    <canvas></canvas>
+    <canvas-wrapper />
     <div class="message">
       <p>It all begins with a shooting star</p>
       <p>You found me and now I'm free</p>
@@ -11,14 +11,21 @@
 </template>
 
 <script>
+import CanvasWrapper from './CanvasWrapper';
 export default {
+  name: "Unicorn",
   data() {
-    return {};
+    return {}
+  },
+  components:{
+    "canvas-wrapper":CanvasWrapper
   }
+
 };
 </script>
 
 <style>
+
 @media only screen and (max-width: 768px) {
   .message {
     position: absolute;
