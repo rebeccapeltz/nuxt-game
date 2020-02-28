@@ -8,12 +8,34 @@
 <script>
 export default {
   data() {
+
     return {
       // By creating the provider in the data property, it becomes reactive,
       // so child components will update when `context` changes.
       provider: {
         // This is the CanvasRenderingContext that children will draw to.
         context: null
+      },
+      drawParams:{
+      CTX: null,
+      WIDTH: 0,
+      HEIGHT: 0,
+      PI2: 2*Math.PI,
+      GRAVITY: 0.125,
+      COLOR_FADE: 0.01,
+      COLORS = [
+  '#9400D3',
+  '#4B0082',
+  '#0000FF',
+  '#00FF00',
+  '#FFFF00',
+  '#FF7F00',
+  '#FF0000'],
+  RENDERER: null,
+  PARTICLES:[],
+  PARTICLE_COUNT: 40,
+  UNICORN_IMAGE: null,
+  UNICORN: null
       }
     }
   },
