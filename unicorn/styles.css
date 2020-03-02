@@ -1,41 +1,41 @@
-
 @media only screen and (max-width: 768px) {
-    body {
-        background-color: black;
-    }
-    .message {
-        /* position: absolute; */
-        width: 100%;
-        /* top: 16px; */
-        /* bottom: 16px; */
-        /* right: 16px; */
-        padding: 8px 16px;
-        background: black;
-        color: white;
-        /* color: black; */
-        font-family: 'Rye', cursive;
-        /* font-family: monospace; */
-        font-size: 40px;
-    }
-}
-@media only screen and (min-width: 768px) {
-.message {
-    position: absolute;
-    max-width: 300px;
+  body {
+    background-color: black;
+  }
+  .message {
+    /* position: absolute; */
+    width: 100%;
     /* top: 16px; */
-    bottom: 16px;
-    right: 16px;
+    /* bottom: 16px; */
+    /* right: 16px; */
     padding: 8px 16px;
-    background: white;
-    color: purple;
+    background: black;
+    color: white;
     /* color: black; */
     font-family: 'Rye', cursive;
     /* font-family: monospace; */
-    font-size: 38px;
+    font-size: 40px;
+  }
 }
+@media only screen and (min-width: 768px) {
+  body {
+    background-color: black;
+  }
+  .message {
+    position: absolute;
+    max-width: 300px;
+    /* top: 16px; */
+    bottom: 0px;
+    right: 16px;
+    padding: 8px 16px;
+    background: black;
+    color: white;
+    /* color: black; */
+    font-family: 'Rye', cursive;
+    /* font-family: monospace; */
+    font-size: 30px;
+  }
 }
-
-
 
 /* font-family: 'Berkshire Swash', cursive;
 font-family: 'Rye', cursive;
